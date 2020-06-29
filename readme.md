@@ -3,6 +3,8 @@ PantherID: 002-46-4288
 
 FUN WITH SCRIPTING TOOLS
 
+All the files are under Lab3 folder (directory) which is under my home directory (mnguyen128) on snowball.
+
 Part 1:
   Please give the permission to execute to the file named script.sh
 by running "chmod 777 script.sh"
