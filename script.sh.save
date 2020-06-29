@@ -1,0 +1,64 @@
+#!/bin/bash
+
+######################################
+# Question 1
+echo ""
+echo "Question 1"
+
+# Running the command and storing the ouput to variable STR
+echo "Running command grep -v '^ATOM\|^CONECT\|^HETATM\|^TER\|^END' 4HKD.pdb"
+STR="$(grep -v '^ATOM\|^CONECT\|^HETATM\|^TER\|^END' 4HKD.pdb)"
+
+# Saving the outputs to a file named 'question1.txt'
+echo "Saving the outputs to file question1.txt"
+echo -e "$STR" > question1.txt
+
+######################################
+# Question 2
+echo ""
+echo "Question 2"
+
+# Running the command and storing the ouput to a temporary file
+echo "Running command sed 's/HETATM/ATOM  /g' 4HKD.pdb > temp"
+sed 's/HETATM/ATOM  /g' 4HKD.pdb > temp
+
+# Running the command on the temporary file and storing the ouput to variable STR
+echo "Running command sed 's/MSE/MET/g' temp"
+STR="$(sed 's/MSE/MET/g' temp)"
+
+# Remove the temporary file
+echo "Removing temp"
+rm temp
+
+# Saving the output to a file named 'question2.txt'
+echo -e "$STR" > question2.txt
+
+######################################
+# Question 3
+echo ""
+echo "Question 3"
+
+# Calculate the max and min
+awk '/ATOM/
+BEGIN {
+	minX = maxX = $7
+	minY = maxY = $8
+	minZ = maxZ = $9
+}
+/ATOM/ {
+	if (minX > $7) minX = $7
+	if (maxX < $7) maxX = $7
+	if (minY > $8) minY = $8
+	if (maxY < $8) maxY = $8
+	if (minZ > $9) minZ = $9
+	if (maxZ < $9) maxZ = $9
+}
+END {
+	printf "X: min = %d\tmax = %d\n", minX, maxX
+        printf "Y: min = %d\tmax = %d\n", minX,	maxX
+        printf "Z: min = %d\tmax = %d\n", minX,	maxX
+
+
+
+echo ""
+echo ""
